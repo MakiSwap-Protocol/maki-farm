@@ -1,6 +1,6 @@
 # Maki-Farm 
 ___
-## Contract Addresses
+## Deployed Contracts
 
 ### HRC-MAINNET
 
