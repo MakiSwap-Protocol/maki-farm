@@ -1,14 +1,42 @@
 // SPDX-License-Identifier: MIT
+
 pragma solidity 0.6.12;
 
 import "maki-swap-lib/contracts/token/HRC20/HRC20.sol";
 
-// MakiToken with Governance.
-contract MakiToken is HRC20('MakiSwap Token', 'Maki') {
+import "./MakiToken.sol";
+
+// SoyBar with Governance.
+contract SoyBar is HRC20('SoyBar Token', 'SOY') {
     /// @dev Creates `_amount` token to `_to`. Must only be called by the owner (MasterChef).
     function mint(address _to, uint256 _amount) public onlyOwner {
         _mint(_to, _amount);
         _moveDelegates(address(0), _delegates[_to], _amount);
+    }
+
+    function burn(address _from ,uint256 _amount) public onlyOwner {
+        _burn(_from, _amount);
+        _moveDelegates(_delegates[_from], address(0), _amount);
+    }
+
+    // The MAKI TOKEN!
+    MakiToken public maki;
+
+
+    constructor(
+        MakiToken _maki
+    ) public {
+        maki = _maki;
+    }
+
+    // Safe maki transfer function, just in case if rounding error causes pool to not have enough MAKI.
+    function safeMakiTransfer(address _to, uint256 _amount) public onlyOwner {
+        uint256 makiBal = maki.balanceOf(address(this));
+        if (_amount > makiBal) {
+            maki.transfer(_to, makiBal);
+        } else {
+            maki.transfer(_to, _amount);
+        }
     }
 
     // Copied and modified from YAM code:
@@ -182,7 +210,7 @@ contract MakiToken is HRC20('MakiSwap Token', 'Maki') {
         internal
     {
         address currentDelegate = _delegates[delegator];
-        uint256 delegatorBalance = balanceOf(delegator); // balance of underlying MAKIs (not scaled);
+        uint256 delegatorBalance = balanceOf(delegator); // balance of underlying MAKI (not scaled);
         _delegates[delegator] = delegatee;
 
         emit DelegateChanged(delegator, currentDelegate, delegatee);
