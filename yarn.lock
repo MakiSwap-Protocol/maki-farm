@@ -9001,10 +9001,10 @@ make-dir@^1.0.0, make-dir@^1.2.0:
   dependencies:
     pify "^3.0.0"
 
-maki-swap-lib@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/maki-swap-lib/-/maki-swap-lib-0.0.1.tgz#4fd89e303fb4cd7a1d5d7ef40ed23daec9879502"
-  integrity sha512-fKkNYcVlKY8vl3I7IdRvY4QH3VojoFjgMynfV++z5MKTDBiCIZVekBbMG1cAE3uZI8bj6ztyR6TdSgXgNE98sQ==
+maki-swap-lib@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/maki-swap-lib/-/maki-swap-lib-0.0.2.tgz#21a4f2229d77a09f371f1e3d9a5bbedaf76a6c15"
+  integrity sha512-Dvwq0Z2SSfaR3M92ftHK12oKj9UlZK960zdjH4KXYnTSErJeFHWL7FtZ+bd65HZPTw2iFWn8POnTlOqpFzvjpQ==
 
 map-age-cleaner@^0.1.1:
   version "0.1.3"
