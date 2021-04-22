@@ -3,16 +3,30 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "migrate": "truffle migrate --network hrcTestnet --reset",
-    "compile": "truffle compile --network hrcTestnet",
+    "migrate": "truffle migrate --reset",
+    "migrate:testnet": "truffle migrate --reset --network hecotest",
+    "compile": "truffle compile",
+    "compile:testnet": "truffle compile --network hecotest",
+    "verify:maki": "truffle run verify MakiToken --network hecotest --license SPDX-License-Identifier",
+    "verify:soy": "truffle run verify SoyBar --network hecotest --license SPDX-License-Identifier",
+    "verify:chef": "truffle run verify MasterChef --network hecotest --license SPDX-License-Identifier",
+    "verify:factory": "truffle run verify MakiSwapFactory --network hecotest --license SPDX-License-Identifier",
+    "verify:router": "truffle run verify MakiSwapRouter02 --network hecotest --license SPDX-License-Identifier",
+    "flatten:bar": "truffle-flattener ./contracts/SoyBar.sol > flats/SoyBar_flat.sol",
+    "flatten:maki": "truffle-flattener contracts/MakiToken.sol > flats/MakiToken_flat.sol",
+    "flatten:chef": "truffle-flattener contracts/MasterChef.sol > flats/MasterChef_flat.sol",
     "test": "npx buidler test",
     "coverage": "npx buidler coverage"
   },
   "dependencies": {
     "@openzeppelin/test-helpers": "^0.5.10",
+    "@truffle/hdwallet-provider": "^1.2.6",
     "maki-swap-lib": "^0.0.2",
+    "maki-swap-periphery": "^1.2.2",
+    "makiswap-core": "^1.0.0",
     "truffle": "^5.1.58",
-    "truffle-flattener": "^1.4.4"
+    "truffle-flattener": "^1.4.4",
+    "truffle-hdwallet-provider-privkey": "^0.3.0"
   },
   "devDependencies": {
     "@nomiclabs/buidler": "^1.4.8",

@@ -3,11 +3,6 @@
 pragma solidity >=0.5.0;
 pragma experimental ABIEncoderV2;
 
-/// @title Multicall - Aggregate results from multiple read-only function calls
-/// @author Michael Elliot <mike@makerdao.com>
-/// @author Joshua Levine <joshua@makerdao.com>
-/// @author Nick Johnson <arachnid@notdot.net>
-
 contract Multicall {
     struct Call {
         address target;
@@ -23,7 +18,7 @@ contract Multicall {
         }
     }
     // Helper functions
-    function getEthBalance(address addr) public view returns (uint256 balance) {
+    function getHtBalance(address addr) public view returns (uint256 balance) {
         balance = addr.balance;
     }
     function getBlockHash(uint256 blockNumber) public view returns (bytes32 blockHash) {
