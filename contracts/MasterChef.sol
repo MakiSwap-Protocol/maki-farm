@@ -11,16 +11,16 @@ import "./MakiToken.sol";
 import "./SoyBar.sol";
 
 interface IMigratorChef {
-    // Perform LP token migration from legacy EasyBakeSwap.
+    // Perform LP token migration from legacy Makiswap.
     // Take the current LP token address and return the new LP token address.
     // Migrator should have full access to the caller's LP token.
     // Return the new LP token address.
     //
-    // XXX Migrator must have allowance access to DOUGH LP tokens.
-    // EasyBakeSwap must mint EXACTLY the same amount of DOUGH LP tokens or
-    // else something bad will happen. Traditional EasyBakeSwap does not
+    // XXX Migrator must have allowance access to MakiSwap LP tokens.
+    // Makiswap must mint EXACTLY the same amount of MakiSwap LP tokens or
+    // else something bad will happen. Traditional Makiswap does not
     // do that so be careful!
-    function migrate(IERC20 token) external returns (IERC20);
+    function migrate(IHRC20 token) external returns (IHRC20);
 }
 
 // MasterChef is the master of Maki. She can make Maki and she is a fair lady.
